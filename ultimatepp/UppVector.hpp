@@ -13,8 +13,8 @@ struct CollectionAdapter< Upp::Vector<T,Alloc<T> > > {
 
 	typedef typename Upp::Vector<T, Alloc<T> > ThisCol;
 	typedef typename Upp::Vector<T, Alloc<T> > const ConstCol;
-	typedef typename ThisCol::iterator Iterator;
-	typedef typename ThisCol::const_iterator ConstIterator;
+	typedef typename ThisCol::Iterator Iterator;
+	typedef typename ThisCol::ConstIterator ConstIterator;
 	typedef T ValueType;
 	typedef const T ConstValueType;
 
@@ -123,8 +123,8 @@ struct CollectionAdapter< const Upp::Vector<T,Alloc<T> > > {
 
 	typedef typename Upp::Vector<T, Alloc<T> > const ThisCol;
 	typedef typename Upp::Vector<T, Alloc<T> > const ConstCol;
-	typedef typename ThisCol::const_iterator Iterator;
-	typedef typename ThisCol::const_iterator ConstIterator;
+	typedef typename ThisCol::ConstIterator Iterator;
+	typedef typename ThisCol::ConstIterator ConstIterator;
 	typedef const T ValueType;
 	typedef const T ConstValueType;
 
@@ -141,41 +141,35 @@ struct CollectionAdapter< const Upp::Vector<T,Alloc<T> > > {
     }
 
 	static ConstIterator begin(ConstCol& c) {
-		return c.cbegin();
+		return c.Begin();
 	}
 
 	static ConstIterator end(ConstCol& c) {
-		return c.cend();
+		return c.End();
 	}
 
 	static ConstIterator cbegin(ConstCol& c) {
-		return c.cbegin();
+		return c.Begin();
 	}
 
 	static ConstIterator cend(ConstCol& c) {
-		return c.cend();
+		return c.End();
 	}
 
 	static long size(ConstCol& c) {
-		return c.size();
+		return c.Count();
 	}
 
     static ValueType& getByIndex(ThisCol& c, size_t i) {
-        return c[i];
+        return c.Get(i);
     }
 
     static Iterator iterAt(ConstCol& c,size_t pos) {
-        if (c.size() < pos) {
-            throw CollectionAdapterNoSuchIteratorException();
-        }
-        return c.cbegin() + pos;
+        return c.GetIter(pos);
     }
 
     static Iterator citerAt(ConstCol& c,size_t pos) {
-        if (c.size() < pos) {
-            throw CollectionAdapterNoSuchIteratorException();
-        }
-        return c.cbegin() + pos;
+        return c.GetIter(pos);
     }
 
     template <class U = int>
@@ -191,11 +185,11 @@ struct CollectionAdapter< const Upp::Vector<T,Alloc<T> > > {
     }
 
     static ConstValueType& first(ConstCol& c) {
-        return c.front();
+        return *begin(c);
     }
 
     static ConstValueType& last(ConstCol& c) {
-        return c.back();
+        return c.Top();
     }
 
     template <class U = int>
