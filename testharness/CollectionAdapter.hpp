@@ -74,6 +74,32 @@ bool existantCollectionTest(T&& c) {
     return true;
 }
 
+// special function, some collections
+// can't do everything so at least test partially
+template <class T>
+bool existantCollectionTest_NoEraseOrInsert(T&& c) {
+    DEF_ADAPTER(T,Ad);
+    IFN_SECTOR_START( "existant collection test (no erase or insert)" );
+
+    static_assert(Ad::is_valid,"Adapter is not supported.");
+    IFN_RET_FALSE(Ad::is_valid);
+    IFN_RET_FALSE(clearTest(c));
+    IFN_RET_FALSE(addTest(c));
+    IFN_RET_FALSE(integrityTest(c));
+    //IFN_RET_FALSE(eraseTest(c));
+    //IFN_RET_FALSE(eraseTest2(c));
+    //IFN_RET_FALSE(eraseTest3(c));
+    //IFN_RET_FALSE(eraseTest4(c));
+    IFN_RET_FALSE(indexTest(c));
+    //IFN_RET_FALSE(insertTest(c));
+    IFN_RET_FALSE(iterIntegrityTest(c));
+    IFN_RET_FALSE(iterAssigmentTest(c));
+    IFN_RET_FALSE(iterAtIntegrityTest(c));
+    IFN_RET_FALSE(sizeTest(c));
+
+    return true;
+}
+
 template <class T>
 void setCollection(T&& c) {
 
