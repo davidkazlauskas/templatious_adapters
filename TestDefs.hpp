@@ -67,8 +67,8 @@ template <
     template <class> class Allocator =
         std::allocator
 >
-bool miscRun() {
-    IFN_SECTOR_START("MISC RUN");
+bool moveCountRun() {
+    IFN_SECTOR_START("MOVE RUN");
 
     { // DESTRUCTOR COUNT
         struct UniqueToken {};
@@ -102,7 +102,7 @@ bool fullRun() {
     bool expr = intRun<Collection,Allocator>();
     IFN_RET_FALSE(expr);
 
-    expr &= miscRun<Collection,Allocator>();
+    expr &= moveCountRun<Collection,Allocator>();
     IFN_RET_FALSE(expr);
 
     return true;
