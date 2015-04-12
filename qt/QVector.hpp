@@ -1,30 +1,8 @@
-//==================================================
-// Copyright (c) 2015 Deividas Kazlauskas
-//
-// See the file license.txt for copying permission.
-//==================================================
-
-/*
- * =====================================================================================
- *
- *       Filename:  StdVector.hpp
- *
- *    Description:  std::vector adapter
- *
- *        Version:  1.0
- *        Created:  05/16/2014 10:07:30 AM
- *       Compiler:  gcc
- *
- *         Author:  David Kazlauskas (dk), david@templatious.org
- *
- * =====================================================================================
- */
-
-#ifndef STDVECTOR_H6YPGTPK
-#define STDVECTOR_H6YPGTPK
+#ifndef QVECTOR_ROGE1AIY
+#define QVECTOR_ROGE1AIY
 
 #include <utility>
-#include <vector>
+#include <QtCore>
 
 #include <templatious/util/Selectors.hpp>
 #include <templatious/CollectionMaker.hpp>
@@ -33,16 +11,16 @@
 namespace templatious {
 namespace adapters {
 
-template <class T,template <class> class Alloc >
-struct CollectionAdapter< std::vector<T,Alloc<T> > > {
+template <class T>
+struct CollectionAdapter< QVector<T> > {
 
     static const bool is_valid = true;
     static const bool floating_iterator = true;
 
-	typedef typename std::vector<T, Alloc<T> > ThisCol;
-	typedef typename std::vector<T, Alloc<T> > const ConstCol;
-	typedef typename ThisCol::iterator Iterator;
-	typedef typename ThisCol::const_iterator ConstIterator;
+	typedef typename QVector<T> ThisCol;
+	typedef typename QVector<T> const ConstCol;
+	typedef typename ThisCol::Iterator Iterator;
+	typedef typename ThisCol::ConstIterator ConstIterator;
 	typedef T ValueType;
 	typedef const T ConstValueType;
 
@@ -151,16 +129,16 @@ struct CollectionAdapter< std::vector<T,Alloc<T> > > {
 
 };
 
-template <class T,template <class> class Alloc >
-struct CollectionAdapter< const std::vector<T,Alloc<T> > > {
+template <class T>
+struct CollectionAdapter< const QVector<T> > {
 
     static const bool is_valid = true;
     static const bool floating_iterator = true;
 
-	typedef typename std::vector<T, Alloc<T> > const ThisCol;
-	typedef typename std::vector<T, Alloc<T> > const ConstCol;
-	typedef typename ThisCol::const_iterator Iterator;
-	typedef typename ThisCol::const_iterator ConstIterator;
+	typedef typename QVector<T> const ThisCol;
+	typedef typename QVector<T> const ConstCol;
+	typedef typename ThisCol::ConstIterator Iterator;
+	typedef typename ThisCol::ConstIterator ConstIterator;
 	typedef const T ValueType;
 	typedef const T ConstValueType;
 
@@ -251,8 +229,8 @@ template <
     class Val,
     template <class> class Alloc
 >
-struct CollectionMaker<Val,std::vector,Alloc> {
-    typedef std::vector<Val,Alloc<Val> > Collection;
+struct CollectionMaker<Val,QVector,Alloc> {
+    typedef QVector<Val> Collection;
     typedef Collection* CollectionPtr;
 
     static const bool is_maker_valid = true;
@@ -282,4 +260,5 @@ struct CollectionMaker<Val,std::vector,Alloc> {
 }
 }
 
-#endif /* end of include guard: STDVECTOR_H6YPGTPK */
+#endif /* end of include guard: QVECTOR_ROGE1AIY */
+
