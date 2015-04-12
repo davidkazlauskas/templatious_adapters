@@ -6,7 +6,7 @@
 
 #define TEMPLATIOUS_TESTING
 
-#include "templatious/FullPack.hpp"
+#include <templatious/FullPack.hpp>
 
 TEMPLATIOUS_TRIPLET_STD;
 
