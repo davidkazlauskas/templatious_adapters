@@ -1,5 +1,5 @@
 
-find_package(Qt4 COMPONENTS QTCORE REQUIRED)
+find_package(Qt4 COMPONENTS QTCORE)
 
 if(QT_QTCORE_INCLUDE_DIR AND QT_QTCORE_LIBRARY)
     message( STATUS "Qt test suite is compiled.")
