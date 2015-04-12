@@ -22,6 +22,8 @@ namespace tt = test_templatious;
 #include "testharness/CCountColTest.hpp"
 #include "testharness/MoveTests.hpp"
 
+namespace test_templatious {
+
 template <
     template <class...> class Collection,
     template <class> class Allocator
@@ -53,6 +55,8 @@ bool fullRun() {
     IFN_RET_FALSE(intRun<Collection,Allocator>());
 
     return true;
+}
+
 }
 
 #endif /* end of include guard: TESTDEFS_W9APLT0J */
