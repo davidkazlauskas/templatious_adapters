@@ -14,8 +14,6 @@ assert_defined( TEMPLATIOUS_DIR )
 SET( TEMPLATIOUS_DIR
     $ENV{TEMPLATIOUS_DIR} )
 
-include_directories( ${UPP_INCLUDE_DIR} ${TEMPLATIOUS_DIR} )
-
 ADD_DEFINITIONS(
     -std=c++11
     -Wall
