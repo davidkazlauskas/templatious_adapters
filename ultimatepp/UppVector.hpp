@@ -2,6 +2,8 @@
 #ifndef UPPVECTOR_ST0TPQEU
 #define UPPVECTOR_ST0TPQEU
 
+#include <Core/Core.h>
+
 namespace templatious {
 namespace adapters {
 
