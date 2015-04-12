@@ -14,11 +14,41 @@
     }\
     ++counter;
 
+namespace tt = test_templatious;
+
 #include "testharness/CollectionAdapter.hpp"
 #include "testharness/Proxies.hpp"
 #include "testharness/VirtualCollection.hpp"
 #include "testharness/CCountColTest.hpp"
 #include "testharness/MoveTests.hpp"
 
+template <
+    template <class...> class Collection,
+    template <class> class Allocator
+>
+bool intRun() {
+    IFN_SECTOR_START("FULL RUN");
+
+    typedef templatious::adapters::
+        CollectionMaker<int,Collection,Allocator> Maker;
+
+    auto col = Maker::make();
+
+    IFN_RET_FALSE(tt::existantCollectionTest(col));
+
+    return true;
+}
+
+template <
+    template <class...> class Collection,
+    template <class> class Allocator
+>
+bool fullRun() {
+    IFN_SECTOR_START("FULL RUN");
+
+    IFN_RET_FALSE(intRun<Collection,Allocator>());
+
+    return true;
+}
 
 #endif /* end of include guard: TESTDEFS_W9APLT0J */
