@@ -9,14 +9,6 @@ function(assert_defined variable)
     endif(NOT DEFINED ENV{${variable}})
 endfunction(assert_defined)
 
-function(is_defined variable)
-    if(NOT DEFINED ENV{${variable}})
-        return(false)
-    else()
-        return(true)
-    endif(NOT DEFINED ENV{${variable}})
-endfunction(is_defined)
-
 assert_defined( TEMPLATIOUS_DIR )
 
 SET( TEMPLATIOUS_DIR
