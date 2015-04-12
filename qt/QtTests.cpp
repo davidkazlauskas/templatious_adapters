@@ -1,5 +1,5 @@
 
-void uppTests() {}
+void qtTests() {}
 
 #ifndef NO_QT_TEST_SUITE
 

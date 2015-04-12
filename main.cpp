@@ -19,6 +19,7 @@
 #include "catch.hpp"
 
 void uppTests();
+void qtTests();
 
 // tests are not always run
 // in the library, so, we execute
@@ -28,6 +29,7 @@ void uppTests();
 // be run
 void useSymbols() {
     uppTests();
+    qtTests();
 }
 
 int main( int argc, char* const argv[] )
