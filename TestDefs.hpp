@@ -26,7 +26,8 @@ namespace test_templatious {
 
 template <
     template <class...> class Collection,
-    template <class> class Allocator
+    template <class> class Allocator =
+        std::allocator
 >
 bool intRun() {
     IFN_SECTOR_START("FULL RUN");
@@ -47,7 +48,8 @@ bool intRun() {
 
 template <
     template <class...> class Collection,
-    template <class> class Allocator
+    template <class> class Allocator =
+        std::allocator
 >
 bool fullRun() {
     IFN_SECTOR_START("FULL RUN");
