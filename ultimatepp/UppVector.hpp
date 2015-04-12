@@ -69,8 +69,13 @@ struct CollectionAdapter< Upp::Vector<T> > {
 		return c.End();
 	}
 
+    // vector of upp returns -1 when moved
 	static long size(ConstCol& c) {
-		return c.GetCount();
+        int curr = c.GetCount();
+        if (curr > 0) {
+            return curr;
+        }
+		return 0;
 	}
 
     static ValueType& getByIndex(ThisCol& c, size_t i) {
@@ -169,7 +174,11 @@ struct CollectionAdapter< const Upp::Vector<T> > {
 	}
 
 	static long size(ConstCol& c) {
-		return c.GetCount();
+        int curr = c.GetCount();
+        if (curr > 0) {
+            return curr;
+        }
+		return 0;
 	}
 
     static ValueType& getByIndex(ThisCol& c, size_t i) {
