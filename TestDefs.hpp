@@ -67,6 +67,29 @@ template <
     template <class> class Allocator =
         std::allocator
 >
+bool miscRun() {
+    IFN_SECTOR_START("MISC RUN");
+
+    { // DESTRUCTOR COUNT
+        struct UniqueToken {};
+        typedef tt::ConstructorCountCollection<UniqueToken> ValType;
+
+        typedef templatious::adapters::
+            CollectionMaker<ValType,Collection,Allocator> Maker;
+        auto v = Maker::make();
+
+        IFN_RET_FALSE(tt::constructionCountCollectionTest<UniqueToken>(v));
+        IFN_RET_FALSE(ValType::count() == 0);
+    }
+
+    return true;
+}
+
+template <
+    template <class...> class Collection,
+    template <class> class Allocator =
+        std::allocator
+>
 bool fullRun() {
     IFN_SECTOR_START("FULL RUN");
 
