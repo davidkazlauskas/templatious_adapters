@@ -27,7 +27,7 @@ struct CollectionAdapter< Upp::Vector<T> > {
 
     template <class V>
     static void insertAt(ThisCol& c,Iterator at, V&& v) {
-        c.Insert(iterDiff(begin(c),at));
+        c.Insert(iterDiff(begin(c),at),std::forward<V>(v),1);
     }
 
 	static Iterator begin(ThisCol& c) {
