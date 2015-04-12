@@ -2,6 +2,8 @@
 #ifndef TESTDEFS_W9APLT0J
 #define TESTDEFS_W9APLT0J
 
+#include "catch.hpp"
+
 #define IFN_SECTOR_START(name) \
     int counter = 0;\
     const char* SECTOR_NAME = name;
