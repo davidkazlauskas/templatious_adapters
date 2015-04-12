@@ -7,7 +7,15 @@ function(assert_defined variable)
     if(NOT DEFINED ENV{${variable}})
         message(FATAL_ERROR "${variable} is undefined in enviroment.")
     endif(NOT DEFINED ENV{${variable}})
-endfunction(undeferr)
+endfunction(assert_defined)
+
+function(is_defined variable)
+    if(NOT DEFINED ENV{${variable}})
+        return(false)
+    else()
+        return(true)
+    endif(NOT DEFINED ENV{${variable}})
+endfunction(is_defined)
 
 assert_defined( TEMPLATIOUS_DIR )
 
