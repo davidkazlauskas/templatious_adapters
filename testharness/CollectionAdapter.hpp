@@ -414,13 +414,25 @@ template <class T>
 bool sortTest(T&& c) {
     IFN_SECTOR_START( "sorting test" );
 
-    SA::clear(c);
-    SA::add(c,3,2,1);
-    SM::sort(c);
+    { // Simple
+        SA::clear(c);
+        SA::add(c,3,2,1);
+        SM::sort(c);
 
-    IFN_RET_FALSE( SA::getByIndex(c,0) == 1 );
-    IFN_RET_FALSE( SA::getByIndex(c,1) == 2 );
-    IFN_RET_FALSE( SA::getByIndex(c,2) == 3 );
+        IFN_RET_FALSE( SA::getByIndex(c,0) == 1 );
+        IFN_RET_FALSE( SA::getByIndex(c,1) == 2 );
+        IFN_RET_FALSE( SA::getByIndex(c,2) == 3 );
+    }
+
+    { // Custom
+        SA::clear(c);
+        SA::add(c,1,2,3);
+        SM::sortS(c,[](int a,int b) { return a > b; });
+
+        IFN_RET_FALSE( SA::getByIndex(c,0) == 3 );
+        IFN_RET_FALSE( SA::getByIndex(c,1) == 2 );
+        IFN_RET_FALSE( SA::getByIndex(c,2) == 1 );
+    }
 
     return true;
 }
