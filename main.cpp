@@ -18,6 +18,7 @@
 #define CATCH_CONFIG_RUNNER
 #include "catch.hpp"
 #include "TestDefs.hpp"
+#include "ultimatepp/All.hpp"
 
 TEST_CASE("lol","[lol]")
 {
@@ -27,6 +28,9 @@ TEST_CASE("lol","[lol]")
 
 int main( int argc, char* const argv[] )
 {
+    Upp::Vector<int> v;
+    SA::add(v,1);
+
     int result = Catch::Session().run( argc, argv );
     return result;
 }

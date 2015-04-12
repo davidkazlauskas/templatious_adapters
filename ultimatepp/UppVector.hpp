@@ -79,11 +79,11 @@ struct CollectionAdapter< Upp::Vector<T> > {
     }
 
     static void erase(ThisCol& c,Iterator pos) {
-        c.Remove(iterDiff(begin(c)),pos,1);
+        c.Remove(iterDiff(begin(c)),1);
     }
 
     static void erase(ThisCol& c,Iterator beg,Iterator end) {
-        c.Remove(iterDiff(begin(c)),pos,iterDiff(beg,end));
+        c.Remove(iterDiff(begin(c)),iterDiff(beg,end));
     }
 
     static ValueType& first(ThisCol& c) {
@@ -212,7 +212,7 @@ template <
     template <class> class Alloc
 >
 struct CollectionMaker<Val,Upp::Vector,Alloc> {
-    typedef Upp::Vector<Val,Alloc<Val> > Collection;
+    typedef Upp::Vector<Val> Collection;
     typedef Collection* CollectionPtr;
 
     static const bool is_maker_valid = true;
@@ -223,7 +223,7 @@ struct CollectionMaker<Val,Upp::Vector,Alloc> {
 
     static Collection make(size_t size) {
         Collection res;
-        res.reserve(size);
+        res.Reserve(size);
         return std::move(res);
     }
 
@@ -233,7 +233,7 @@ struct CollectionMaker<Val,Upp::Vector,Alloc> {
 
     static Collection* makeHeap(size_t size) {
         CollectionPtr res = new Collection();
-        res->reserve(size);
+        res->Reserve(size);
         return res;
     }
 
