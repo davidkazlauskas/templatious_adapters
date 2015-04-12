@@ -3,14 +3,16 @@ cmake_minimum_required(VERSION 2.6)
 
 project(TTEST CXX)
 
-#SET( UPP_INCLUDE_DIR
-    #"/usr/share/upp/uppsrc/" )
-## path to Core.a/Core.lib here
-#SET( UPP_LIB
-    #"/home/deividas/Desktop/storage/Prj/upp/out/bazaar/Core/GCC4.Debug.Debug_Full.Noblitz.Shared.Sse2/Core.a")
+function(assert_defined variable)
+    if(NOT DEFINED ENV{${variable}})
+        message(FATAL_ERROR "${variable} is undefined in enviroment.")
+    endif(NOT DEFINED ENV{${variable}})
+endfunction(undeferr)
+
+assert_defined( TEMPLATIOUS_DIR )
 
 SET( TEMPLATIOUS_DIR
-    "/home/deividas/Desktop/Dropbox/MyPrj/Templatious" )
+    $ENV{TEMPLATIOUS_DIR} )
 
 include_directories( ${UPP_INCLUDE_DIR} ${TEMPLATIOUS_DIR} )
 
