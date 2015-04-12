@@ -1,7 +1,10 @@
 
 find_package(Qt4 COMPONENTS QTCORE)
 
-SET( QTSOURCES QVectorTests.cpp )
+SET( QTSOURCES
+    QVectorTests.cpp
+    QListTests.cpp
+)
 
 if(QT_QTCORE_INCLUDE_DIR AND QT_QTCORE_LIBRARY)
     message( STATUS "Qt test suite is compiled.")
