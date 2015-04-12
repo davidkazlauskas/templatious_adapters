@@ -82,11 +82,13 @@ bool moveCountRun() {
         IFN_RET_FALSE(ValType::count() == 0);
     }
 
+#ifndef TTEST_SKIP_MISC_MOVE_TEST
     { // MOVE TEST
         typedef templatious::adapters::
             CollectionMaker<MovablePod,Collection,Allocator> Maker;
         auto v = Maker::make();
     }
+#endif
 
     return true;
 }
