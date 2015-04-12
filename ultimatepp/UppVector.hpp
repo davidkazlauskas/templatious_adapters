@@ -39,14 +39,17 @@ struct CollectionAdapter< Upp::Vector<T> > {
 	}
 
     static Iterator iterAt(ThisCol& c,size_t pos) {
+        throwNoIter(c,pos);
         return c.GetIter(pos);
     }
 
     static ConstIterator iterAt(ConstCol& c,size_t pos) {
+        throwNoIter(c,pos);
         return c.GetIter(pos);
     }
 
     static ConstIterator citerAt(ConstCol& c,size_t pos) {
+        throwNoIter(c,pos);
         return c.GetIter(pos);
     }
 
@@ -115,6 +118,13 @@ private:
     static int iterDiff(const ThisIter& a,const ThisIter& b) {
         return b - a;
     }
+
+    template <class V>
+    static void throwNoIter(const V& col,int i) {
+        if (i > size(col) || i < 0) {
+            throw CollectionAdapterNoSuchIteratorException();
+        }
+    }
 };
 
 template <class T>
@@ -159,7 +169,7 @@ struct CollectionAdapter< const Upp::Vector<T> > {
 	}
 
 	static long size(ConstCol& c) {
-		return c.Count();
+		return c.GetCount();
 	}
 
     static ValueType& getByIndex(ThisCol& c, size_t i) {
@@ -167,10 +177,12 @@ struct CollectionAdapter< const Upp::Vector<T> > {
     }
 
     static Iterator iterAt(ConstCol& c,size_t pos) {
+        throwNoIter(c,pos);
         return c.GetIter(pos);
     }
 
     static Iterator citerAt(ConstCol& c,size_t pos) {
+        throwNoIter(c,pos);
         return c.GetIter(pos);
     }
 
@@ -204,6 +216,13 @@ struct CollectionAdapter< const Upp::Vector<T> > {
         return false;
     }
 
+private:
+    template <class V>
+    static void throwNoIter(const V& col,int i) {
+        if (i > size(col) || i < 0) {
+            throw CollectionAdapterNoSuchIteratorException();
+        }
+    }
 };
 
 
