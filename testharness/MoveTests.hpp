@@ -19,6 +19,8 @@
 #define MOVETESTS_UD8CT3TJ
 
 struct MovablePod {
+
+    MovablePod() = delete;
     MovablePod(int i) : _i(i) {}
     MovablePod(const MovablePod& c) : _i(c._i) {}
     MovablePod(MovablePod&& c) : _i(c._i) {

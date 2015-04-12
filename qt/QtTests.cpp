@@ -14,7 +14,7 @@ void qtTests() {}
 TEST_CASE( "QVector", "[qvector]" )
 {
     std::cout << "Running QVector tests." << std::endl;
-    bool res = tt::intRun<QVector,std::allocator>();
+    bool res = tt::fullRun<QVector,std::allocator>();
     REQUIRE( res );
 }
 
