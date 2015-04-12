@@ -71,15 +71,21 @@ bool miscRun() {
     IFN_SECTOR_START("MISC RUN");
 
     { // DESTRUCTOR COUNT
-        struct UniqueToken {};
-        typedef tt::ConstructorCountCollection<UniqueToken> ValType;
+        //struct UniqueToken {};
+        //typedef tt::ConstructorCountCollection<UniqueToken> ValType;
 
-        typedef templatious::adapters::
-            CollectionMaker<ValType,Collection,Allocator> Maker;
-        auto v = Maker::make();
+        //typedef templatious::adapters::
+            //CollectionMaker<ValType,Collection,Allocator> Maker;
+        //auto v = Maker::make();
 
-        IFN_RET_FALSE(tt::constructionCountCollectionTest<UniqueToken>(v));
-        IFN_RET_FALSE(ValType::count() == 0);
+        //IFN_RET_FALSE(tt::constructionCountCollectionTest<UniqueToken>(v));
+        //IFN_RET_FALSE(ValType::count() == 0);
+    }
+
+    { // MOVE TEST
+        //typedef templatious::adapters::
+            //CollectionMaker<MovablePod,Collection,Allocator> Maker;
+        //auto v = Maker::make();
     }
 
     return true;
@@ -94,6 +100,9 @@ bool fullRun() {
     IFN_SECTOR_START("FULL RUN");
 
     bool expr = intRun<Collection,Allocator>();
+    IFN_RET_FALSE(expr);
+
+    expr &= miscRun<Collection,Allocator>();
     IFN_RET_FALSE(expr);
 
     return true;
