@@ -3,9 +3,9 @@ void qList() {}
 
 #ifndef NO_QT_TEST_SUITE
 
-// Qt vectors are implicitly shared
+// Qt lists are implicitly shared
 // and don't have rvalue constructor...
-//#define TTEST_SKIP_PROXY_MOVE_SEMANTICS
+#define TTEST_SKIP_PROXY_MOVE_SEMANTICS
 
 // QVector relies on objects having a
 // default constructor... Not good
