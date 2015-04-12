@@ -79,11 +79,11 @@ struct CollectionAdapter< Upp::Vector<T> > {
     }
 
     static void erase(ThisCol& c,Iterator pos) {
-        c.Remove(iterDiff(begin(c)),1);
+        c.Remove(iterDiff(begin(c),pos),1);
     }
 
     static void erase(ThisCol& c,Iterator beg,Iterator end) {
-        c.Remove(iterDiff(begin(c)),iterDiff(beg,end));
+        c.Remove(iterDiff(begin(c),beg),iterDiff(beg,end));
     }
 
     static ValueType& first(ThisCol& c) {
