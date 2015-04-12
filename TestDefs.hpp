@@ -35,6 +35,10 @@ bool intRun() {
     auto col = Maker::make();
 
     IFN_RET_FALSE(tt::existantCollectionTest(col));
+    IFN_RET_FALSE(tt::proxyTest(col));
+    IFN_RET_FALSE(tt::constProxyTest(col));
+    IFN_RET_FALSE(tt::proxyDeletionTest(col));
+    IFN_RET_FALSE(tt::virtualTest(col));
 
     return true;
 }
