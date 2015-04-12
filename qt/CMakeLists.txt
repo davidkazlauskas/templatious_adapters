@@ -1,7 +1,7 @@
 
 find_package(Qt4 COMPONENTS QTCORE REQUIRED)
 
-if(Qt4)
+if(QT_QTCORE_INCLUDE_DIR AND QT_QTCORE_LIBRARY)
     message( STATUS "Qt test suite is compiled.")
     include_directories( ${TEMPLATIOUS_DIR} ${UPP_INCLUDE_DIR} )
     SET( QTSOURCES QtTests.cpp )
