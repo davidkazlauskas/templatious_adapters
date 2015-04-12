@@ -20,9 +20,20 @@
 
 void uppTests();
 
+// tests are not always run
+// in the library, so, we execute
+// some dummy functions from libraries
+// to make sure catch framework
+// registers tests and they would
+// be run
+void useSymbols() {
+    uppTests();
+}
+
 int main( int argc, char* const argv[] )
 {
-    uppTests();
+    useSymbols();
+
     int result = Catch::Session().run( argc, argv );
     return result;
 }
