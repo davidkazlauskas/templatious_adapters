@@ -2,6 +2,8 @@
 #ifndef TESTDEFS_W9APLT0J
 #define TESTDEFS_W9APLT0J
 
+#include <iostream>
+
 #define TEMPLATIOUS_TESTING
 
 #include "templatious/FullPack.hpp"
