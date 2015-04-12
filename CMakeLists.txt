@@ -25,9 +25,15 @@ ADD_DEFINITIONS(
 SET(CMAKE_CXX_COMPILER "g++-4.9")
 
 add_subdirectory( ultimatepp )
+add_subdirectory( qt )
+
+SET( TEST_LIBS
+    UltimateppTests
+    QtTests
+)
 
 add_executable( a.out main.cpp )
-target_link_libraries( a.out UltimateppTests )
+target_link_libraries( a.out ${TEST_LIBS} )
 
 SET(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
