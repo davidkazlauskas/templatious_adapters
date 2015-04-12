@@ -17,12 +17,12 @@
 
 #define CATCH_CONFIG_RUNNER
 #include "catch.hpp"
-
 #include "TestDefs.hpp"
 
 TEST_CASE("lol","[lol]")
 {
-    REQUIRE( tt::fullRun<std::vector,std::allocator>() );
+    bool res = tt::fullRun<std::vector,std::allocator>();
+    REQUIRE( res );
 }
 
 int main( int argc, char* const argv[] )

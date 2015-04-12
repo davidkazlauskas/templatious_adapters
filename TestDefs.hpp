@@ -2,7 +2,13 @@
 #ifndef TESTDEFS_W9APLT0J
 #define TESTDEFS_W9APLT0J
 
-#include "catch.hpp"
+#define TEMPLATIOUS_TESTING
+
+#include "templatious/FullPack.hpp"
+
+TEMPLATIOUS_TRIPLET_STD;
+
+#define DEF_ADAPTER(cl,name) typedef templatious::adapters::CollectionAdapter<cl> name
 
 #define IFN_SECTOR_START(name) \
     int counter = 0;\
@@ -16,11 +22,17 @@
     }\
     ++counter;
 
+namespace test_templatious {
+    namespace t = templatious;
+    namespace tt = test_templatious;
+}
+
 namespace tt = test_templatious;
 
 #include "testharness/CollectionAdapter.hpp"
 #include "testharness/Proxies.hpp"
 #include "testharness/VirtualCollection.hpp"
+#include "testharness/ConstructorCountCollection.hpp"
 #include "testharness/CCountColTest.hpp"
 #include "testharness/MoveTests.hpp"
 
@@ -56,7 +68,8 @@ template <
 bool fullRun() {
     IFN_SECTOR_START("FULL RUN");
 
-    IFN_RET_FALSE(intRun<Collection,Allocator>());
+    bool expr = intRun<Collection,Allocator>();
+    IFN_RET_FALSE(expr);
 
     return true;
 }
