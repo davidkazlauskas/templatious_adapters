@@ -4,6 +4,7 @@ find_package(Qt4 COMPONENTS QTCORE)
 SET( QTSOURCES
     QVectorTests.cpp
     QListTests.cpp
+    SymbolExport.cpp
 )
 
 if(QT_QTCORE_INCLUDE_DIR AND QT_QTCORE_LIBRARY)
