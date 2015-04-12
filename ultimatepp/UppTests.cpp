@@ -10,7 +10,7 @@ void uppTests() {}
 TEST_CASE( "Upp::Vector", "[upp_vector]" )
 {
     std::cout << "Running Upp::Vector tests." << std::endl;
-    bool res = tt::fullRun<Upp::Vector,std::allocator>();
+    bool res = tt::intRun<Upp::Vector,std::allocator>();
     REQUIRE( res );
 }
 
