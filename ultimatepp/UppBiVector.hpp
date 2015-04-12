@@ -25,9 +25,10 @@ struct CollectionAdapter< Upp::BiVector<T> > {
 		c.Add(std::forward<V>(i));
 	}
 
-    template <class V>
+    template <class V,class U = int>
     static void insertAt(ThisCol& c,Iterator at, V&& v) {
-        c.Insert(iterDiff(begin(c),at),std::forward<V>(v),1);
+        static_assert(templatious::util::DummyResolver<U,false>::val,
+                "BiVector doesn't support insertion.");
     }
 
 	static Iterator begin(ThisCol& c) {
@@ -86,12 +87,16 @@ struct CollectionAdapter< Upp::BiVector<T> > {
         return c[i];
     }
 
+    template <class U = int>
     static void erase(ThisCol& c,Iterator pos) {
-        c.Remove(iterDiff(begin(c),pos),1);
+        static_assert(templatious::util::DummyResolver<U,false>::val,
+                "BiVector doesn't support erase.");
     }
 
+    template <class U = int>
     static void erase(ThisCol& c,Iterator beg,Iterator end) {
-        c.Remove(iterDiff(begin(c),beg),iterDiff(beg,end));
+        static_assert(templatious::util::DummyResolver<U,false>::val,
+                "BiVector doesn't support erase.");
     }
 
     static ValueType& first(ThisCol& c) {
@@ -154,7 +159,7 @@ struct CollectionAdapter< const Upp::BiVector<T> > {
     template <class V,class U = int>
     static void insertAt(ThisCol& c, Iterator at, V&& v) {
         static_assert(templatious::util::DummyResolver<U,false>::val,
-                "Const version of a collection doesn't support this method");
+                "BiVector doesn't support insertion.");
     }
 
 	static ConstIterator begin(ConstCol& c) {
@@ -198,13 +203,13 @@ struct CollectionAdapter< const Upp::BiVector<T> > {
     template <class U = int>
     static void erase(ThisCol& c,Iterator pos) {
         static_assert(templatious::util::DummyResolver<U,false>::val,
-                "Const version of a collection doesn't support this method");
+                "BiVector doesn't support erase.");
     }
 
     template <class U = int>
     static void erase(ThisCol& c,Iterator beg,Iterator end) {
         static_assert(templatious::util::DummyResolver<U,false>::val,
-                "Const version of a collection doesn't support this method");
+                "BiVector doesn't support erase.");
     }
 
     static ConstValueType& first(ConstCol& c) {
