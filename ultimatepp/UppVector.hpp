@@ -5,14 +5,14 @@
 namespace templatious {
 namespace adapters {
 
-template <class T,template <class> class Alloc >
-struct CollectionAdapter< Upp::Vector<T,Alloc<T> > > {
+template <class T>
+struct CollectionAdapter< Upp::Vector<T> > {
 
     static const bool is_valid = true;
     static const bool floating_iterator = true;
 
-	typedef typename Upp::Vector<T, Alloc<T> > ThisCol;
-	typedef typename Upp::Vector<T, Alloc<T> > const ConstCol;
+	typedef typename Upp::Vector<T> ThisCol;
+	typedef typename Upp::Vector<T> const ConstCol;
 	typedef typename ThisCol::Iterator Iterator;
 	typedef typename ThisCol::ConstIterator ConstIterator;
 	typedef T ValueType;
@@ -115,14 +115,14 @@ private:
     }
 };
 
-template <class T,template <class> class Alloc >
-struct CollectionAdapter< const Upp::Vector<T,Alloc<T> > > {
+template <class T>
+struct CollectionAdapter< const Upp::Vector<T> > {
 
     static const bool is_valid = true;
     static const bool floating_iterator = true;
 
-	typedef typename Upp::Vector<T, Alloc<T> > const ThisCol;
-	typedef typename Upp::Vector<T, Alloc<T> > const ConstCol;
+	typedef typename Upp::Vector<T> const ThisCol;
+	typedef typename Upp::Vector<T> const ConstCol;
 	typedef typename ThisCol::ConstIterator Iterator;
 	typedef typename ThisCol::ConstIterator ConstIterator;
 	typedef const T ValueType;
