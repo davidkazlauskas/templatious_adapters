@@ -47,21 +47,21 @@ struct CollectionAdapter< QVector<T> > {
 	}
 
     static Iterator iterAt(ThisCol& c,long pos) {
-        if (c.size() < pos) {
+        if (c.size() < pos || pos < 0) {
             throw CollectionAdapterNoSuchIteratorException();
         }
         return c.begin() + pos;
     }
 
     static ConstIterator iterAt(ConstCol& c,long pos) {
-        if (c.size() < pos) {
+        if (c.size() < pos || pos < 0) {
             throw CollectionAdapterNoSuchIteratorException();
         }
         return c.constBegin() + pos;
     }
 
     static ConstIterator citerAt(ConstCol& c,long pos) {
-        if (c.size() < pos) {
+        if (c.size() < pos || pos < 0) {
             throw CollectionAdapterNoSuchIteratorException();
         }
         return c.constBegin() + pos;
@@ -179,14 +179,14 @@ struct CollectionAdapter< const QVector<T> > {
     }
 
     static Iterator iterAt(ConstCol& c,long pos) {
-        if (c.size() < pos) {
+        if (c.size() < pos || pos < 0) {
             throw CollectionAdapterNoSuchIteratorException();
         }
         return c.constBegin() + pos;
     }
 
     static Iterator citerAt(ConstCol& c,long pos) {
-        if (c.size() < pos) {
+        if (c.size() < pos || pos < 0) {
             throw CollectionAdapterNoSuchIteratorException();
         }
         return c.constBegin() + pos;
