@@ -18,8 +18,6 @@
 #ifndef MOVETESTS_UD8CT3TJ
 #define MOVETESTS_UD8CT3TJ
 
-#include "TestDefs.hpp"
-
 struct MovablePod {
     MovablePod(int i) : _i(i) {}
     MovablePod(const MovablePod& c) : _i(c._i) {}

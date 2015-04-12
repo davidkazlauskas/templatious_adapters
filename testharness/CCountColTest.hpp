@@ -18,8 +18,6 @@
 #ifndef CCOUNTCOLTEST_NB2GEKN5
 #define CCOUNTCOLTEST_NB2GEKN5
 
-#include "../TestDefs.hpp"
-
 namespace test_templatious {
 
 template <class Token,class T>
