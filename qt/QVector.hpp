@@ -2,7 +2,7 @@
 #define QVECTOR_ROGE1AIY
 
 #include <utility>
-#include <QtCore>
+#include <QVector>
 
 #include <templatious/util/Selectors.hpp>
 #include <templatious/CollectionMaker.hpp>
@@ -17,8 +17,8 @@ struct CollectionAdapter< QVector<T> > {
     static const bool is_valid = true;
     static const bool floating_iterator = true;
 
-	typedef typename QVector<T> ThisCol;
-	typedef typename QVector<T> const ConstCol;
+	typedef QVector<T> ThisCol;
+	typedef QVector<T> const ConstCol;
 	typedef typename ThisCol::Iterator Iterator;
 	typedef typename ThisCol::ConstIterator ConstIterator;
 	typedef T ValueType;
@@ -57,18 +57,18 @@ struct CollectionAdapter< QVector<T> > {
         if (c.size() < pos) {
             throw CollectionAdapterNoSuchIteratorException();
         }
-        return c.cbegin() + pos;
+        return c.constBegin() + pos;
     }
 
     static ConstIterator citerAt(ConstCol& c,size_t pos) {
         if (c.size() < pos) {
             throw CollectionAdapterNoSuchIteratorException();
         }
-        return c.cbegin() + pos;
+        return c.constBegin() + pos;
     }
 
 	static ConstIterator begin(ConstCol& c) {
-		return c.cbegin();
+		return c.constBegin();
 	}
 
 	static ConstIterator end(ConstCol& c) {
@@ -76,7 +76,7 @@ struct CollectionAdapter< QVector<T> > {
 	}
 
 	static ConstIterator cbegin(ConstCol& c) {
-		return c.cbegin();
+		return c.constBegin();
 	}
 
 	static ConstIterator cend(ConstCol& c) {
@@ -135,8 +135,8 @@ struct CollectionAdapter< const QVector<T> > {
     static const bool is_valid = true;
     static const bool floating_iterator = true;
 
-	typedef typename QVector<T> const ThisCol;
-	typedef typename QVector<T> const ConstCol;
+	typedef QVector<T> const ThisCol;
+	typedef QVector<T> const ConstCol;
 	typedef typename ThisCol::ConstIterator Iterator;
 	typedef typename ThisCol::ConstIterator ConstIterator;
 	typedef const T ValueType;
@@ -155,7 +155,7 @@ struct CollectionAdapter< const QVector<T> > {
     }
 
 	static ConstIterator begin(ConstCol& c) {
-		return c.cbegin();
+		return c.constBegin();
 	}
 
 	static ConstIterator end(ConstCol& c) {
@@ -163,7 +163,7 @@ struct CollectionAdapter< const QVector<T> > {
 	}
 
 	static ConstIterator cbegin(ConstCol& c) {
-		return c.cbegin();
+		return c.constBegin();
 	}
 
 	static ConstIterator cend(ConstCol& c) {
@@ -182,14 +182,14 @@ struct CollectionAdapter< const QVector<T> > {
         if (c.size() < pos) {
             throw CollectionAdapterNoSuchIteratorException();
         }
-        return c.cbegin() + pos;
+        return c.constBegin() + pos;
     }
 
     static Iterator citerAt(ConstCol& c,size_t pos) {
         if (c.size() < pos) {
             throw CollectionAdapterNoSuchIteratorException();
         }
-        return c.cbegin() + pos;
+        return c.constBegin() + pos;
     }
 
     template <class U = int>
