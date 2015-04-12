@@ -72,7 +72,7 @@ struct CollectionAdapter< QVector<T> > {
 	}
 
 	static ConstIterator end(ConstCol& c) {
-		return c.cend();
+		return c.constEnd();
 	}
 
 	static ConstIterator cbegin(ConstCol& c) {
@@ -80,7 +80,7 @@ struct CollectionAdapter< QVector<T> > {
 	}
 
 	static ConstIterator cend(ConstCol& c) {
-		return c.cend();
+		return c.constEnd();
 	}
 
 	static long size(ConstCol& c) {
@@ -159,7 +159,7 @@ struct CollectionAdapter< const QVector<T> > {
 	}
 
 	static ConstIterator end(ConstCol& c) {
-		return c.cend();
+		return c.constEnd();
 	}
 
 	static ConstIterator cbegin(ConstCol& c) {
@@ -167,7 +167,7 @@ struct CollectionAdapter< const QVector<T> > {
 	}
 
 	static ConstIterator cend(ConstCol& c) {
-		return c.cend();
+		return c.constEnd();
 	}
 
 	static long size(ConstCol& c) {
