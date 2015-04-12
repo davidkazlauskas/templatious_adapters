@@ -6,13 +6,13 @@ namespace templatious {
 namespace adapters {
 
 template <class T,template <class> class Alloc >
-struct CollectionAdapter< std::vector<T,Alloc<T> > > {
+struct CollectionAdapter< Upp::Vector<T,Alloc<T> > > {
 
     static const bool is_valid = true;
     static const bool floating_iterator = true;
 
-	typedef typename std::vector<T, Alloc<T> > ThisCol;
-	typedef typename std::vector<T, Alloc<T> > const ConstCol;
+	typedef typename Upp::Vector<T, Alloc<T> > ThisCol;
+	typedef typename Upp::Vector<T, Alloc<T> > const ConstCol;
 	typedef typename ThisCol::iterator Iterator;
 	typedef typename ThisCol::const_iterator ConstIterator;
 	typedef T ValueType;
@@ -20,117 +20,109 @@ struct CollectionAdapter< std::vector<T,Alloc<T> > > {
 
     template <class V>
 	static void add(ThisCol& c,V&& i) {
-		c.push_back(std::forward<V>(i));
+		c.Add(std::forward<V>(i));
 	}
 
     template <class V>
-    static void insertAt(ThisCol& c, Iterator at, V&& v) {
-        if (at < begin(c) || at >= end(c)) {
-            throw CollectionAdapterIteratorOutOfBoundsException();
-        }
-
-        c.insert(at,std::forward<V>(v));
+    static void insertAt(ThisCol& c,Iterator at, V&& v) {
+        c.Insert(iterDiff(begin(c),at));
     }
 
 	static Iterator begin(ThisCol& c) {
-		return c.begin();
+		return c.Begin();
 	}
 
 	static Iterator end(ThisCol& c) {
-		return c.end();
+		return c.End();
 	}
 
     static Iterator iterAt(ThisCol& c,size_t pos) {
-        if (c.size() < pos) {
-            throw CollectionAdapterNoSuchIteratorException();
-        }
-        return c.begin() + pos;
+        return c.GetIter(pos);
     }
 
     static ConstIterator iterAt(ConstCol& c,size_t pos) {
-        if (c.size() < pos) {
-            throw CollectionAdapterNoSuchIteratorException();
-        }
-        return c.cbegin() + pos;
+        return c.GetIter(pos);
     }
 
     static ConstIterator citerAt(ConstCol& c,size_t pos) {
-        if (c.size() < pos) {
-            throw CollectionAdapterNoSuchIteratorException();
-        }
-        return c.cbegin() + pos;
+        return c.GetIter(pos);
     }
 
 	static ConstIterator begin(ConstCol& c) {
-		return c.cbegin();
+		return c.Begin();
 	}
 
 	static ConstIterator end(ConstCol& c) {
-		return c.cend();
+		return c.End();
 	}
 
 	static ConstIterator cbegin(ConstCol& c) {
-		return c.cbegin();
+		return c.Begin();
 	}
 
 	static ConstIterator cend(ConstCol& c) {
-		return c.cend();
+		return c.End();
 	}
 
 	static long size(ConstCol& c) {
-		return c.size();
+		return c.GetCount();
 	}
 
     static ValueType& getByIndex(ThisCol& c, size_t i) {
-        return c[i];
+        return c.Get(i);
     }
 
     static ConstValueType& getByIndex(ConstCol& c, size_t i) {
-        return c[i];
+        return c.Get(i);
     }
 
     static void erase(ThisCol& c,Iterator pos) {
-        c.erase(pos);
+        c.Remove(iterDiff(begin(c)),pos,1);
     }
 
     static void erase(ThisCol& c,Iterator beg,Iterator end) {
-        c.erase(beg,end);
+        c.Remove(iterDiff(begin(c)),pos,iterDiff(beg,end));
     }
 
     static ValueType& first(ThisCol& c) {
-        return c.front();
+        return *begin(c);
     }
 
     static ConstValueType& first(ConstCol& c) {
-        return c.front();
+        return *cbegin(c);
     }
 
     static ValueType& last(ThisCol& c) {
-        return c.back();
+        return c.Top();
     }
 
     static ConstValueType& last(ConstCol& c) {
-        return c.back();
+        return c.Top();
     }
 
     static void clear(ThisCol& c) {
-        c.clear();
+        c.Clear();
     }
 
     static bool canAdd(ConstCol& c) {
         return true;
     }
 
+private:
+    template <class ThisIter>
+    static int iterDiff(const ThisIter& a,const ThisIter& b) {
+        return b - a;
+    }
 };
 
 template <class T,template <class> class Alloc >
-struct CollectionAdapter< const std::vector<T,Alloc<T> > > {
+struct CollectionAdapter< const Upp::Vector<T,Alloc<T> > > {
 
     static const bool is_valid = true;
     static const bool floating_iterator = true;
 
-	typedef typename std::vector<T, Alloc<T> > const ThisCol;
-	typedef typename std::vector<T, Alloc<T> > const ConstCol;
+	typedef typename Upp::Vector<T, Alloc<T> > const ThisCol;
+	typedef typename Upp::Vector<T, Alloc<T> > const ConstCol;
 	typedef typename ThisCol::const_iterator Iterator;
 	typedef typename ThisCol::const_iterator ConstIterator;
 	typedef const T ValueType;
@@ -223,8 +215,8 @@ template <
     class Val,
     template <class> class Alloc
 >
-struct CollectionMaker<Val,std::vector,Alloc> {
-    typedef std::vector<Val,Alloc<Val> > Collection;
+struct CollectionMaker<Val,Upp::Vector,Alloc> {
+    typedef Upp::Vector<Val,Alloc<Val> > Collection;
     typedef Collection* CollectionPtr;
 
     static const bool is_maker_valid = true;
