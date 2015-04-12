@@ -1,4 +1,6 @@
 
+void qList() {}
+
 #ifndef NO_QT_TEST_SUITE
 
 // Qt vectors are implicitly shared

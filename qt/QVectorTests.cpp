@@ -1,5 +1,5 @@
 
-void qtTests() {}
+void qVector() {}
 
 #ifndef NO_QT_TEST_SUITE
 
