@@ -39,17 +39,17 @@ struct CollectionAdapter< Upp::BiVector<T> > {
 		return c.End();
 	}
 
-    static Iterator iterAt(ThisCol& c,size_t pos) {
+    static Iterator iterAt(ThisCol& c,long pos) {
         throwNoIter(c,pos);
         return c.GetIter(pos);
     }
 
-    static ConstIterator iterAt(ConstCol& c,size_t pos) {
+    static ConstIterator iterAt(ConstCol& c,long pos) {
         throwNoIter(c,pos);
         return c.GetIter(pos);
     }
 
-    static ConstIterator citerAt(ConstCol& c,size_t pos) {
+    static ConstIterator citerAt(ConstCol& c,long pos) {
         throwNoIter(c,pos);
         return c.GetIter(pos);
     }
@@ -79,11 +79,11 @@ struct CollectionAdapter< Upp::BiVector<T> > {
 		return 0;
 	}
 
-    static ValueType& getByIndex(ThisCol& c, size_t i) {
+    static ValueType& getByIndex(ThisCol& c, long i) {
         return c[i];
     }
 
-    static ConstValueType& getByIndex(ConstCol& c, size_t i) {
+    static ConstValueType& getByIndex(ConstCol& c, long i) {
         return c[i];
     }
 
@@ -186,16 +186,16 @@ struct CollectionAdapter< const Upp::BiVector<T> > {
 		return 0;
 	}
 
-    static ValueType& getByIndex(ThisCol& c, size_t i) {
+    static ValueType& getByIndex(ThisCol& c, long i) {
         return c[i];
     }
 
-    static Iterator iterAt(ConstCol& c,size_t pos) {
+    static Iterator iterAt(ConstCol& c,long pos) {
         throwNoIter(c,pos);
         return c.GetIter(pos);
     }
 
-    static Iterator citerAt(ConstCol& c,size_t pos) {
+    static Iterator citerAt(ConstCol& c,long pos) {
         throwNoIter(c,pos);
         return c.GetIter(pos);
     }
@@ -254,7 +254,7 @@ struct CollectionMaker<Val,Upp::BiVector,Alloc> {
         return std::move(Collection());
     }
 
-    static Collection make(size_t size) {
+    static Collection make(long size) {
         Collection res;
         res.Reserve(size);
         return std::move(res);
@@ -264,7 +264,7 @@ struct CollectionMaker<Val,Upp::BiVector,Alloc> {
         return new Collection();
     }
 
-    static Collection* makeHeap(size_t size) {
+    static Collection* makeHeap(long size) {
         CollectionPtr res = new Collection();
         res->Reserve(size);
         return res;

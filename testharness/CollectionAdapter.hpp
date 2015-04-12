@@ -138,7 +138,7 @@ template <class T>
 bool integrityTest(T&& c) {
     setCollection(c);
 
-    size_t res = 0;
+    long res = 0;
     for (auto i = SA::begin(c); i != SA::end(c); ++i) {
         res += *i;
     }
@@ -155,7 +155,7 @@ bool eraseTest(T&& c) {
     }
 
     SA::eraseTillEnd(c,it);
-    size_t res = 0;
+    long res = 0;
     for (auto i = SA::begin(c); i != SA::end(c); ++i) {
         res += *i;
     }
@@ -173,7 +173,7 @@ bool eraseTest2(T&& c) {
     }
 
     SA::erase(c,SA::begin(c),it);
-    size_t res = 0;
+    long res = 0;
     for (auto i = SA::begin(c); i != SA::end(c); ++i) {
         res += *i;
     }
@@ -191,7 +191,7 @@ bool eraseTest3(T&& c) {
 
     IFN_RET_FALSE(SA::size(c) == 0);
 
-    size_t res = 0;
+    long res = 0;
     for (auto i = SA::begin(c); i != SA::end(c); ++i) {
         res += *i;
     }
@@ -220,7 +220,7 @@ bool eraseTest4(T&& c) {
     IFN_RET_FALSE(SA::getByIndex(c,3) == 5);
     IFN_RET_FALSE(SA::getByIndex(c,4) == 6);
 
-    size_t res = 0;
+    long res = 0;
     for (auto i = SA::begin(c); i != SA::end(c); ++i) {
         res += *i;
     }
@@ -269,7 +269,7 @@ bool insertTest(T&& c) {
     IFN_RET_FALSE(SA::getByIndex(c,7) == 5);
     IFN_RET_FALSE(SA::getByIndex(c,8) == 6);
 
-    size_t res = 0;
+    long res = 0;
     for (auto i = SA::begin(c); i != SA::end(c); ++i) {
         res += *i;
     }
@@ -298,7 +298,7 @@ bool iterAssigmentTest(T&& c) {
         *i = 7 - *i;
     }
 
-    size_t res = 0;
+    long res = 0;
     for (auto i = SA::begin(c); i != SA::end(c); ++i) {
         res += *i;
     }

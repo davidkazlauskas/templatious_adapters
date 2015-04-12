@@ -46,21 +46,21 @@ struct CollectionAdapter< QVector<T> > {
 		return c.end();
 	}
 
-    static Iterator iterAt(ThisCol& c,size_t pos) {
+    static Iterator iterAt(ThisCol& c,long pos) {
         if (c.size() < pos) {
             throw CollectionAdapterNoSuchIteratorException();
         }
         return c.begin() + pos;
     }
 
-    static ConstIterator iterAt(ConstCol& c,size_t pos) {
+    static ConstIterator iterAt(ConstCol& c,long pos) {
         if (c.size() < pos) {
             throw CollectionAdapterNoSuchIteratorException();
         }
         return c.constBegin() + pos;
     }
 
-    static ConstIterator citerAt(ConstCol& c,size_t pos) {
+    static ConstIterator citerAt(ConstCol& c,long pos) {
         if (c.size() < pos) {
             throw CollectionAdapterNoSuchIteratorException();
         }
@@ -87,11 +87,11 @@ struct CollectionAdapter< QVector<T> > {
 		return c.size();
 	}
 
-    static ValueType& getByIndex(ThisCol& c, size_t i) {
+    static ValueType& getByIndex(ThisCol& c, long i) {
         return c[i];
     }
 
-    static ConstValueType& getByIndex(ConstCol& c, size_t i) {
+    static ConstValueType& getByIndex(ConstCol& c, long i) {
         return c[i];
     }
 
@@ -174,18 +174,18 @@ struct CollectionAdapter< const QVector<T> > {
 		return c.size();
 	}
 
-    static ValueType& getByIndex(ThisCol& c, size_t i) {
+    static ValueType& getByIndex(ThisCol& c, long i) {
         return c[i];
     }
 
-    static Iterator iterAt(ConstCol& c,size_t pos) {
+    static Iterator iterAt(ConstCol& c,long pos) {
         if (c.size() < pos) {
             throw CollectionAdapterNoSuchIteratorException();
         }
         return c.constBegin() + pos;
     }
 
-    static Iterator citerAt(ConstCol& c,size_t pos) {
+    static Iterator citerAt(ConstCol& c,long pos) {
         if (c.size() < pos) {
             throw CollectionAdapterNoSuchIteratorException();
         }
@@ -239,7 +239,7 @@ struct CollectionMaker<Val,QVector,Alloc> {
         return std::move(Collection());
     }
 
-    static Collection make(size_t size) {
+    static Collection make(long size) {
         Collection res;
         res.reserve(size);
         return std::move(res);
@@ -249,7 +249,7 @@ struct CollectionMaker<Val,QVector,Alloc> {
         return new Collection();
     }
 
-    static Collection* makeHeap(size_t size) {
+    static Collection* makeHeap(long size) {
         CollectionPtr res = new Collection();
         res->reserve(size);
         return res;
