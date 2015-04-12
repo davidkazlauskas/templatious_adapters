@@ -379,8 +379,10 @@ bool proxyDeletionTest(T&& c) {
     IFN_RET_FALSE(_stf_cl_range(c));
     IFN_RET_FALSE(_stf_cl_range_end(c));
 
+#ifndef TTEST_SKIP_PROXY_MOVE_SEMANTICS
     // move
     IFN_RET_FALSE(moveSemanticsTest(c));
+#endif
 
     // clearance assertions
     IFN_RET_FALSE(clearanceAssertionsTest(c));
