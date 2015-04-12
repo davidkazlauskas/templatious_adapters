@@ -1,7 +1,7 @@
 
 void uppTests() {}
 
-#ifndef NO_UPP_TEST_SUITE
+#ifndef NO_QT_TEST_SUITE
 
 #include "../catch.hpp"
 #include "../TestDefs.hpp"
