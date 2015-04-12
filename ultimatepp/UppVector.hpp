@@ -71,11 +71,11 @@ struct CollectionAdapter< Upp::Vector<T> > {
 	}
 
     static ValueType& getByIndex(ThisCol& c, size_t i) {
-        return c.Get(i);
+        return c[i];
     }
 
     static ConstValueType& getByIndex(ConstCol& c, size_t i) {
-        return c.Get(i);
+        return c[i];
     }
 
     static void erase(ThisCol& c,Iterator pos) {
@@ -163,7 +163,7 @@ struct CollectionAdapter< const Upp::Vector<T> > {
 	}
 
     static ValueType& getByIndex(ThisCol& c, size_t i) {
-        return c.Get(i);
+        return c[i];
     }
 
     static Iterator iterAt(ConstCol& c,size_t pos) {
