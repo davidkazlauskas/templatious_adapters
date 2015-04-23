@@ -23,7 +23,6 @@ ADD_DEFINITIONS(
     -fcolor-diagnostics
 )
 
-#SET(CMAKE_CXX_COMPILER "g++-4.8")
 SET(CMAKE_CXX_COMPILER "clang++-3.7" )
 
 add_subdirectory( ultimatepp )
