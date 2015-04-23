@@ -20,6 +20,7 @@ ADD_DEFINITIONS(
     -x c++
     -ggdb3
     -O0
+    -fcolor-diagnostics
 )
 
 #SET(CMAKE_CXX_COMPILER "g++-4.8")

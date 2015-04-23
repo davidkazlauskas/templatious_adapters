@@ -108,7 +108,7 @@ struct CollectionAdapter< QLinkedList<T> > {
 	}
 
     static ValueType& getByIndex(ThisCol& c, long i) {
-        return *citerAt(c,i);
+        return *iterAt(c,i);
     }
 
     static ConstValueType& getByIndex(ConstCol& c, long i) {
