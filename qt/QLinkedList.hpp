@@ -108,11 +108,11 @@ struct CollectionAdapter< QLinkedList<T> > {
 	}
 
     static ValueType& getByIndex(ThisCol& c, long i) {
-        return c[i];
+        return *citerAt(c,i);
     }
 
     static ConstValueType& getByIndex(ConstCol& c, long i) {
-        return c[i];
+        return *citerAt(c,i);
     }
 
     static void erase(ThisCol& c,Iterator pos) {
@@ -194,21 +194,37 @@ struct CollectionAdapter< const QLinkedList<T> > {
 	}
 
     static ValueType& getByIndex(ThisCol& c, long i) {
-        return c[i];
+        return *iterAt(c,i);
     }
 
     static Iterator iterAt(ConstCol& c,long pos) {
         if (c.size() < pos || pos < 0) {
             throw CollectionAdapterNoSuchIteratorException();
         }
-        return c.constBegin() + pos;
+
+        auto iter = c.cbegin();
+        auto end = c.cend();
+        long i = 0;
+        while (i < pos) {
+            ++iter;
+            ++i;
+        }
+        return iter;
     }
 
     static Iterator citerAt(ConstCol& c,long pos) {
         if (c.size() < pos || pos < 0) {
             throw CollectionAdapterNoSuchIteratorException();
         }
-        return c.constBegin() + pos;
+
+        auto iter = c.cbegin();
+        auto end = c.cend();
+        long i = 0;
+        while (i < pos) {
+            ++iter;
+            ++i;
+        }
+        return iter;
     }
 
     template <class U = int>
