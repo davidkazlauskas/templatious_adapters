@@ -3,7 +3,7 @@ void qLinkedList() {}
 
 #ifndef NO_QT_TEST_SUITE
 
-// Qt lists are implicitly shared
+// Qt containers are implicitly shared
 // and don't have rvalue constructor...
 #define TTEST_SKIP_PROXY_MOVE_SEMANTICS
 
