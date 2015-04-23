@@ -15,7 +15,7 @@ template <class T>
 struct CollectionAdapter< QLinkedList<T> > {
 
     static const bool is_valid = true;
-    static const bool floating_iterator = true;
+    static const bool floating_iterator = false;
 
 	typedef QLinkedList<T> ThisCol;
 	typedef QLinkedList<T> const ConstCol;
@@ -152,7 +152,7 @@ template <class T>
 struct CollectionAdapter< const QLinkedList<T> > {
 
     static const bool is_valid = true;
-    static const bool floating_iterator = true;
+    static const bool floating_iterator = false;
 
 	typedef QLinkedList<T> const ThisCol;
 	typedef QLinkedList<T> const ConstCol;
