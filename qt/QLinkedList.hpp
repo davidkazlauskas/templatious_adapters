@@ -31,10 +31,6 @@ struct CollectionAdapter< QLinkedList<T> > {
 
     template <class V>
     static void insertAt(ThisCol& c, Iterator at, V&& v) {
-        if (at < begin(c) || at >= end(c)) {
-            throw CollectionAdapterIteratorOutOfBoundsException();
-        }
-
         c.insert(at,std::forward<V>(v));
     }
 
@@ -50,21 +46,45 @@ struct CollectionAdapter< QLinkedList<T> > {
         if (c.size() < pos || pos < 0) {
             throw CollectionAdapterNoSuchIteratorException();
         }
-        return c.begin() + pos;
+
+        auto iter = c.begin();
+        auto end = c.end();
+        long i = 0;
+        while (i < pos) {
+            ++iter;
+            ++i;
+        }
+        return iter;
     }
 
     static ConstIterator iterAt(ConstCol& c,long pos) {
         if (c.size() < pos || pos < 0) {
             throw CollectionAdapterNoSuchIteratorException();
         }
-        return c.constBegin() + pos;
+
+        auto iter = c.cbegin();
+        auto end = c.cend();
+        long i = 0;
+        while (i < pos) {
+            ++iter;
+            ++i;
+        }
+        return iter;
     }
 
     static ConstIterator citerAt(ConstCol& c,long pos) {
         if (c.size() < pos || pos < 0) {
             throw CollectionAdapterNoSuchIteratorException();
         }
-        return c.constBegin() + pos;
+
+        auto iter = c.cbegin();
+        auto end = c.cend();
+        long i = 0;
+        while (i < pos) {
+            ++iter;
+            ++i;
+        }
+        return iter;
     }
 
 	static ConstIterator begin(ConstCol& c) {
@@ -126,7 +146,6 @@ struct CollectionAdapter< QLinkedList<T> > {
     static bool canAdd(ConstCol& c) {
         return true;
     }
-
 };
 
 template <class T>
