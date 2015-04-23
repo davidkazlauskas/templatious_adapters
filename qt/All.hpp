@@ -4,5 +4,6 @@
 
 #include <templatious_adapters/qt/QVector.hpp>
 #include <templatious_adapters/qt/QList.hpp>
+#include <templatious_adapters/qt/QLinkedList.hpp>
 
 #endif /* end of include guard: ALL_BXTNEUY9 */
