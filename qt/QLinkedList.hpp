@@ -62,8 +62,8 @@ struct CollectionAdapter< QLinkedList<T> > {
             throw CollectionAdapterNoSuchIteratorException();
         }
 
-        auto iter = c.cbegin();
-        auto end = c.cend();
+        auto iter = c.constBegin();
+        auto end = c.constEnd();
         long i = 0;
         while (i < pos) {
             ++iter;
@@ -77,8 +77,8 @@ struct CollectionAdapter< QLinkedList<T> > {
             throw CollectionAdapterNoSuchIteratorException();
         }
 
-        auto iter = c.cbegin();
-        auto end = c.cend();
+        auto iter = c.constBegin();
+        auto end = c.constEnd();
         long i = 0;
         while (i < pos) {
             ++iter;
@@ -202,8 +202,8 @@ struct CollectionAdapter< const QLinkedList<T> > {
             throw CollectionAdapterNoSuchIteratorException();
         }
 
-        auto iter = c.cbegin();
-        auto end = c.cend();
+        auto iter = c.constBegin();
+        auto end = c.constEnd();
         long i = 0;
         while (i < pos) {
             ++iter;
@@ -217,8 +217,8 @@ struct CollectionAdapter< const QLinkedList<T> > {
             throw CollectionAdapterNoSuchIteratorException();
         }
 
-        auto iter = c.cbegin();
-        auto end = c.cend();
+        auto iter = c.constBegin();
+        auto end = c.constEnd();
         long i = 0;
         while (i < pos) {
             ++iter;
