@@ -4,6 +4,7 @@ find_package(Qt4 COMPONENTS QTCORE)
 SET( QTSOURCES
     QVectorTests.cpp
     QListTests.cpp
+    QLinkedListTests.cpp
     SymbolExport.cpp
 )
 

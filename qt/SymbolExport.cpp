@@ -5,9 +5,11 @@
 // foreign in translation units
 void qVector();
 void qList();
+void qLinkedList();
 
 void qtTests() {
     qVector();
     qList();
+    qLinkedList();
 }
 

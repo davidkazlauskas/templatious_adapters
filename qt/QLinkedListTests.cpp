@@ -1,5 +1,5 @@
 
-void qList() {}
+void qLinkedList() {}
 
 #ifndef NO_QT_TEST_SUITE
 
