@@ -215,6 +215,7 @@ bool throwVirtualTest(T& t) {
             IFN_RET_FALSE( caught );
         }
 
+#ifndef TTEST_SKIPINSERT
         { // GET ITER
             auto vcc = SF::vcollectionCustom<
                 t::AP_THROW,
@@ -233,6 +234,7 @@ bool throwVirtualTest(T& t) {
                 IFN_RET_FALSE( caught );
             }
         }
+#endif
     }
 
     { // CLEARANCE
@@ -297,7 +299,9 @@ bool fakeVirtualTest(T& t) {
 
     { // ADDABLE
         SA::add(vc,7);
+#ifndef TTEST_SKIP_INSERT
         SA::insert(vc,SA::begin(vc),7);
+#endif
 
         IFN_RET_FALSE( SA::size(t) == 0 );
     }

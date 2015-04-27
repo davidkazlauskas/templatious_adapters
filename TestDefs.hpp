@@ -56,7 +56,9 @@ bool intRun() {
     IFN_RET_FALSE(tt::existantCollectionTest(col));
     IFN_RET_FALSE(tt::proxyTest(col));
     IFN_RET_FALSE(tt::constProxyTest(col));
+#ifndef TTEST_SKIP_ERASE
     IFN_RET_FALSE(tt::proxyDeletionTest(col));
+#endif
     IFN_RET_FALSE(tt::virtualTest(col));
 
     return true;

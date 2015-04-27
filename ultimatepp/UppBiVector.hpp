@@ -100,11 +100,11 @@ struct CollectionAdapter< Upp::BiVector<T> > {
     }
 
     static ValueType& first(ThisCol& c) {
-        return *begin(c);
+        return c.Head();
     }
 
     static ConstValueType& first(ConstCol& c) {
-        return *cbegin(c);
+        return c.Tail();
     }
 
     static ValueType& last(ThisCol& c) {
@@ -213,11 +213,11 @@ struct CollectionAdapter< const Upp::BiVector<T> > {
     }
 
     static ConstValueType& first(ConstCol& c) {
-        return *begin(c);
+        return c.Head();
     }
 
     static ConstValueType& last(ConstCol& c) {
-        return c.Top();
+        return c.Tail();
     }
 
     template <class U = int>
