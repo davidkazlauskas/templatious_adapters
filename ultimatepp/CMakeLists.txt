@@ -1,9 +1,4 @@
 
-#SET( ENV{UPP_CORE_LIB}
-     #"/home/deividas/Desktop/storage/Prj/upp/out/bazaar/Core/GCC4.Debug.Debug_Full.Noblitz.Shared.Sse2/Core.a" )
-#SET( ENV{UPP_INCLUDE_DIR}
-    #"/usr/share/upp/uppsrc/" )
-
 SET( UPP_INCLUDE_DIR $ENV{UPP_INCLUDE_DIR} )
 SET( UPP_CORE_LIB $ENV{UPP_CORE_LIB} )
 
