@@ -8,6 +8,10 @@ void uppTests() {}
 #define TTEST_SKIP_MISC_MOVE_TEST
 #define TTEST_SKIP_DESTRUCTOR_COUNT
 
+// no insertion for bivector
+#define TTEST_SKIP_INSERT
+#define TTEST_SKIP_ERASE
+
 #include "../catch.hpp"
 #include "../TestDefs.hpp"
 #include "All.hpp"
