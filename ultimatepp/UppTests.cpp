@@ -19,4 +19,11 @@ TEST_CASE( "Upp::Vector", "[upp_vector]" )
     REQUIRE( res );
 }
 
+TEST_CASE( "Upp::BiVector", "[upp_bivector]" )
+{
+    std::cout << "Running Upp::BiVector tests." << std::endl;
+    bool res = tt::fullRun<Upp::BiVector,std::allocator>();
+    REQUIRE( res );
+}
+
 #endif
