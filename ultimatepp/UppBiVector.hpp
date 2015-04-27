@@ -11,7 +11,7 @@ template <class T>
 struct CollectionAdapter< Upp::BiVector<T> > {
 
     static const bool is_valid = true;
-    static const bool floating_iterator = true;
+    static const bool floating_iterator = false;
 
 	typedef typename Upp::BiVector<T> ThisCol;
 	typedef typename Upp::BiVector<T> const ConstCol;
@@ -141,7 +141,7 @@ template <class T>
 struct CollectionAdapter< const Upp::BiVector<T> > {
 
     static const bool is_valid = true;
-    static const bool floating_iterator = true;
+    static const bool floating_iterator = false;
 
 	typedef typename Upp::BiVector<T> const ThisCol;
 	typedef typename Upp::BiVector<T> const ConstCol;
