@@ -215,7 +215,7 @@ bool throwVirtualTest(T& t) {
             IFN_RET_FALSE( caught );
         }
 
-#ifndef TTEST_SKIPINSERT
+#ifndef TTEST_SKIP_INSERT
         { // GET ITER
             auto vcc = SF::vcollectionCustom<
                 t::AP_THROW,
