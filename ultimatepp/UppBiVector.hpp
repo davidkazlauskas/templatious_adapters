@@ -22,7 +22,7 @@ struct CollectionAdapter< Upp::BiVector<T> > {
 
     template <class V>
 	static void add(ThisCol& c,V&& i) {
-		c.Add(std::forward<V>(i));
+		c.AddTail(std::forward<V>(i));
 	}
 
     template <class V,class U = int>
