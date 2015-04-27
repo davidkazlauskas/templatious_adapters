@@ -5,7 +5,7 @@ SET( UPP_CORE_LIB $ENV{UPP_CORE_LIB} )
 SET( UPPSOURCES
     UppTests.cpp
     UppVector.cpp
-    #UppBiVector.cpp
+    UppBiVector.cpp
     )
 
 if(UPP_INCLUDE_DIR AND UPP_CORE_LIB)
