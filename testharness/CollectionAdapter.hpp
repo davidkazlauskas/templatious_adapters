@@ -67,7 +67,9 @@ bool existantCollectionTest(T&& c) {
     IFN_RET_FALSE(eraseTest3(c));
     IFN_RET_FALSE(eraseTest4(c));
     IFN_RET_FALSE(indexTest(c));
+#ifndef TTEST_SKIP_INSERT
     IFN_RET_FALSE(insertTest(c));
+#endif
     IFN_RET_FALSE(iterIntegrityTest(c));
     IFN_RET_FALSE(iterAssigmentTest(c));
     IFN_RET_FALSE(iterAtIntegrityTest(c));
