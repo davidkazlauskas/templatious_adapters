@@ -70,6 +70,7 @@ template <
 bool moveCountRun() {
     IFN_SECTOR_START("MOVE RUN");
 
+#ifndef TTEST_SKIP_DESTRUCTOR_COUNT
     { // DESTRUCTOR COUNT
         struct UniqueToken {};
         typedef tt::ConstructorCountCollection<UniqueToken> ValType;
@@ -81,6 +82,7 @@ bool moveCountRun() {
         IFN_RET_FALSE(tt::constructionCountCollectionTest<UniqueToken>(v));
         IFN_RET_FALSE(ValType::count() == 0);
     }
+#endif
 
 #ifndef TTEST_SKIP_MISC_MOVE_TEST
     { // MOVE TEST
