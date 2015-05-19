@@ -323,10 +323,18 @@ template <class T>
 bool iterAtIntegrityTest(T&& c) {
     IFN_SECTOR_START( "iter at integrity test" );
 
+    typedef t::adapters::CollectionAdapter<T> Ad;
+    typedef t::adapters::CollectionAdapter<typename Ad::ConstCol> CAd;
+    auto& cref = static_cast<typename Ad::ConstCol&>(c);
+
+    IFN_RET_FALSE( Ad::canAdd(c) );
+    IFN_RET_FALSE( !CAd::canAdd(cref) );
+
     SA::clear(c);
     SA::add(c,SF::seqL(100));
 
     int size = SA::size(c);
+    long sizeConst = CAd::size(cref);
     IFN_RET_FALSE(size == 100);
 
     typedef t::adapters::CollectionAdapter<T> Ad;
@@ -337,6 +345,8 @@ bool iterAtIntegrityTest(T&& c) {
     SA::add(v,c);
 
     IFN_RET_FALSE(SA::size(v) == size);
+    auto realBeg = Ad::begin(cref);
+    auto crealBeg = CAd::begin(cref);
 
     auto beg = v.cbegin();
     auto end = v.cend();
@@ -349,19 +359,36 @@ bool iterAtIntegrityTest(T&& c) {
         auto cIt = SA::citerAt(c,cnt);
         auto itC = Ad::iterAt(static_cast<typename Ad::ConstCol&>(c),cnt);
         auto &rAt = SA::getByIndex(c,cnt);
-        auto &rcAt = SA::getByIndex(static_cast<typename Ad::ConstCol&>(c),cnt);
+        auto &rcAt = SA::getByIndex(cref,cnt);
+        auto &cAdIdx = Ad::getByIndex(cref,cnt);
         auto itCC = CAd::iterAt(c,cnt);
+        auto citCC = CAd::citerAt(c,cnt);
         testPassed &= *it == *beg;
         testPassed &= *cIt == *beg;
         testPassed &= *itC == *beg;
         testPassed &= *itCC == *beg;
+        testPassed &= *citCC == *beg;
         testPassed &= rAt == *beg;
         testPassed &= rcAt == *beg;
+        testPassed &= cAdIdx == *beg;
+        testPassed &= *realBeg == *beg;
+        testPassed &= *crealBeg == *beg;
         ++cnt;
 
         prVal = *beg;
         ++beg;
+        ++realBeg;
+        ++crealBeg;
     }
+
+    testPassed &= Ad::end(cref) == realBeg;
+    testPassed &= CAd::end(cref) == crealBeg;
+    testPassed &= Ad::first(c) == 0;
+    testPassed &= Ad::last(c) == 99;
+    testPassed &= Ad::first(cref) == 0;
+    testPassed &= Ad::last(cref) == 99;
+    testPassed &= CAd::first(cref) == 0;
+    testPassed &= CAd::last(cref) == 99;
 
     IFN_RET_FALSE(testPassed);
 
@@ -384,6 +411,166 @@ bool iterAtIntegrityTest(T&& c) {
         bool caught = false;
         try {
             SA::citerAt(c,-1);
+        } catch (std::exception e) {
+            caught = true;
+        }
+        IFN_RET_FALSE(caught);
+    }
+
+    {
+        bool caught = false;
+        try {
+            CAd::getByIndex(cref,-1);
+        } catch (std::exception e) {
+            caught = true;
+        }
+        IFN_RET_FALSE(caught);
+    }
+
+    {
+        bool caught = false;
+        try {
+            CAd::getByIndex(cref,size);
+        } catch (std::exception e) {
+            caught = true;
+        }
+        IFN_RET_FALSE(caught);
+    }
+
+    {
+        bool caught = false;
+        try {
+            Ad::getByIndex(cref,-1);
+        } catch (std::exception e) {
+            caught = true;
+        }
+        IFN_RET_FALSE(caught);
+    }
+
+    {
+        bool caught = false;
+        try {
+            Ad::getByIndex(cref,size);
+        } catch (std::exception e) {
+            caught = true;
+        }
+        IFN_RET_FALSE(caught);
+    }
+
+    {
+        bool caught = false;
+        try {
+            Ad::getByIndex(c,-1);
+        } catch (std::exception e) {
+            caught = true;
+        }
+        IFN_RET_FALSE(caught);
+    }
+
+    {
+        bool caught = false;
+        try {
+            Ad::getByIndex(c,size);
+        } catch (std::exception e) {
+            caught = true;
+        }
+        IFN_RET_FALSE(caught);
+    }
+
+    {
+        bool caught = false;
+        try {
+            Ad::iterAt(c,-1);
+        } catch (std::exception e) {
+            caught = true;
+        }
+        IFN_RET_FALSE(caught);
+    }
+
+    {
+        bool caught = false;
+        try {
+            Ad::iterAt(c,size + 1);
+        } catch (std::exception e) {
+            caught = true;
+        }
+        IFN_RET_FALSE(caught);
+    }
+
+    {
+        bool caught = false;
+        try {
+            Ad::iterAt(cref,-1);
+        } catch (std::exception e) {
+            caught = true;
+        }
+        IFN_RET_FALSE(caught);
+    }
+
+    {
+        bool caught = false;
+        try {
+            Ad::iterAt(cref,size + 1);
+        } catch (std::exception e) {
+            caught = true;
+        }
+        IFN_RET_FALSE(caught);
+    }
+
+    {
+        bool caught = false;
+        try {
+            CAd::iterAt(cref,-1);
+        } catch (std::exception e) {
+            caught = true;
+        }
+        IFN_RET_FALSE(caught);
+    }
+
+    {
+        bool caught = false;
+        try {
+            CAd::iterAt(cref,size + 1);
+        } catch (std::exception e) {
+            caught = true;
+        }
+        IFN_RET_FALSE(caught);
+    }
+
+    {
+        bool caught = false;
+        try {
+            Ad::citerAt(cref,-1);
+        } catch (std::exception e) {
+            caught = true;
+        }
+        IFN_RET_FALSE(caught);
+    }
+
+    {
+        bool caught = false;
+        try {
+            Ad::citerAt(cref,size + 1);
+        } catch (std::exception e) {
+            caught = true;
+        }
+        IFN_RET_FALSE(caught);
+    }
+
+    {
+        bool caught = false;
+        try {
+            CAd::citerAt(cref,-1);
+        } catch (std::exception e) {
+            caught = true;
+        }
+        IFN_RET_FALSE(caught);
+    }
+
+    {
+        bool caught = false;
+        try {
+            CAd::citerAt(cref,size + 1);
         } catch (std::exception e) {
             caught = true;
         }
