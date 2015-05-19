@@ -108,10 +108,16 @@ struct CollectionAdapter< QLinkedList<T> > {
 	}
 
     static ValueType& getByIndex(ThisCol& c, long i) {
+        if (i < 0 || i >= c.size()) {
+            throw templatious::adapters::CollectionAdapterNoSuchElementException();
+        }
         return *iterAt(c,i);
     }
 
     static ConstValueType& getByIndex(ConstCol& c, long i) {
+        if (i < 0 || i >= c.size()) {
+            throw templatious::adapters::CollectionAdapterNoSuchElementException();
+        }
         return *citerAt(c,i);
     }
 
@@ -194,6 +200,9 @@ struct CollectionAdapter< const QLinkedList<T> > {
 	}
 
     static ValueType& getByIndex(ThisCol& c, long i) {
+        if (i < 0 || i >= c.size()) {
+            throw templatious::adapters::CollectionAdapterNoSuchElementException();
+        }
         return *iterAt(c,i);
     }
 

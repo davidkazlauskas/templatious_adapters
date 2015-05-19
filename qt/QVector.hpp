@@ -88,10 +88,16 @@ struct CollectionAdapter< QVector<T> > {
 	}
 
     static ValueType& getByIndex(ThisCol& c, long i) {
+        if (i < 0 || i >= c.size()) {
+            throw templatious::adapters::CollectionAdapterNoSuchElementException();
+        }
         return c[i];
     }
 
     static ConstValueType& getByIndex(ConstCol& c, long i) {
+        if (i < 0 || i >= c.size()) {
+            throw templatious::adapters::CollectionAdapterNoSuchElementException();
+        }
         return c[i];
     }
 
@@ -175,6 +181,9 @@ struct CollectionAdapter< const QVector<T> > {
 	}
 
     static ValueType& getByIndex(ThisCol& c, long i) {
+        if (i < 0 || i >= c.size()) {
+            throw templatious::adapters::CollectionAdapterNoSuchElementException();
+        }
         return c[i];
     }
 
