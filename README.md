@@ -4,7 +4,7 @@ Third party collection adapters for templatious library.
 
 Currently supported frameworks and collections:
 
-### Qt
+### Qt (4 version)
 - QVector
 - QList
 - QLinkedLIst
