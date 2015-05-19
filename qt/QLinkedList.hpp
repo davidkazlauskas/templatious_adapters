@@ -48,7 +48,6 @@ struct CollectionAdapter< QLinkedList<T> > {
         }
 
         auto iter = c.begin();
-        auto end = c.end();
         long i = 0;
         while (i < pos) {
             ++iter;
@@ -63,7 +62,6 @@ struct CollectionAdapter< QLinkedList<T> > {
         }
 
         auto iter = c.constBegin();
-        auto end = c.constEnd();
         long i = 0;
         while (i < pos) {
             ++iter;
@@ -78,7 +76,6 @@ struct CollectionAdapter< QLinkedList<T> > {
         }
 
         auto iter = c.constBegin();
-        auto end = c.constEnd();
         long i = 0;
         while (i < pos) {
             ++iter;
@@ -212,7 +209,6 @@ struct CollectionAdapter< const QLinkedList<T> > {
         }
 
         auto iter = c.constBegin();
-        auto end = c.constEnd();
         long i = 0;
         while (i < pos) {
             ++iter;
@@ -227,7 +223,6 @@ struct CollectionAdapter< const QLinkedList<T> > {
         }
 
         auto iter = c.constBegin();
-        auto end = c.constEnd();
         long i = 0;
         while (i < pos) {
             ++iter;
