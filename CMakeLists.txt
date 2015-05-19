@@ -18,12 +18,7 @@ ADD_DEFINITIONS(
     -std=c++11
     -Wall
     -x c++
-    -ggdb3
-    -O0
-    -fcolor-diagnostics
 )
-
-SET(CMAKE_CXX_COMPILER "clang++-3.7" )
 
 add_subdirectory( ultimatepp )
 add_subdirectory( qt )
