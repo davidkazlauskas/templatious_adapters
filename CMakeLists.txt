@@ -9,6 +9,8 @@ function(assert_defined variable)
     endif(NOT DEFINED ENV{${variable}})
 endfunction(assert_defined)
 
+include_directories( ${CMAKE_SOURCE_DIR}/.. )
+
 assert_defined( TEMPLATIOUS_DIR )
 
 SET( TEMPLATIOUS_DIR
